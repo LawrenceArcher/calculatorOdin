@@ -13,16 +13,16 @@ function divide(input1, input2){
 function operate(operator, input1, input2){
 	switch (operator){
 		case "+":
-			add(input1, input2)
+			return add(input1, input2)
 			break;
 		case "-":
-			subtract(input1, input2)
+			return subtract(input1, input2)
 			break;
 		case "*":
-			multiply(input1, input2)
+			return multiply(input1, input2)
 			break;
 		case "/":
-			divide(input1, input2)
+			return divide(input1, input2)
 			break;
 	}
 }

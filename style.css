@@ -1,1 +1,36 @@
-some style
+.container{
+	width: 500px;
+	height: 800px;
+}
+#calcOutline{
+	background-color: #B8B8B8;
+	width:90%;
+	height: 90%;
+	border-radius:10px;
+}
+.pull-left{
+	padding: 20px;
+	width:30%;
+	display: inline-block;
+}
+.pull-right{
+	width:50%;
+	display: inline-block;
+}
+#solarPanel{
+	background-color: #262221;
+	height:60px;
+	width: 180px;
+}
+#screen{
+	background-color:#D5E3E4;
+	width:90%;
+	height: 150px; 
+	margin:5%;
+}
+.button{
+	background-color: #3F4045;
+	width:80%;
+	height: 60px;
+	border-radius: 20px;
+}
