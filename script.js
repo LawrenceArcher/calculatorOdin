@@ -1,6 +1,7 @@
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll('.button');
 const clear = document.querySelector("#clear");
+const specials = ["+", "-", ".", "÷", "x"];
 clear.addEventListener('click', (e) => {
   location.reload();
 });
@@ -8,54 +9,33 @@ var operands = [];
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
     var x = button.textContent;//run script from here to append number to display / run operations
-		console.log(x);
-		if (/[0123456789]/.test(x)){
-			display.textContent += x;
-		}else if (x == "+"){
-			operands.push(display.textContent);
-      operands.push("+");
-			display.textContent = "";
-			console.log(operands);
-		}else if (x == "-"){
-			operands.push(display.textContent);
-      operands.push("-");
-			display.textContent = "";
-			console.log(operands);
-		}else if (x == "*"){
-			operands.push(display.textContent);
-      operands.push("*");
-			display.textContent = "";
-			console.log(operands);
-		}else if (x == "/"){
-			operands.push(display.textContent);
-      operands.push("/");
-			display.textContent = "";
-			console.log(operands);
-		}else if(x == "="){
-      operands.push(display.textContent);
-      display.textContent = operate(operands[1], Number(operands[0]), Number(operands[2]));
-      operands = [];
+	if (/[0123456789]/.test(x)){
+		display.textContent += x;
+	}else if (x == "+"){
+		display.textContent += "+";
+	}else if (x == "-"){
+		display.textContent += "-";
+	}else if (x == "x"){
+		display.textContent += "x";
+	}else if (x == "÷"){
+		display.textContent += "÷";
+	}else if (x=="."){
+		display.textContent += ".";
+	}else if(x == "="){
+ 		if (/÷0/.test(display.textContent)){
+ 			display.textContent = "You are a cunt";
+ 			return;
+ 		}
+ 		for (let i=0; i < specials.length; i++){
+ 			if(display.textContent[display.textContent.length-1] == specials[i]){
+ 				display.textContent = display.textContent.slice(0, -1);2
+ 				break;
+ 			}
+ 			console.log("run:"+i);
+ 		}
+ 		var equation = display.textContent.replace(/x/g, '*').replace(/÷/g, '/')
+
+  		display.textContent = eval(equation);
     };
   });
 });
-
-
-function operate(operator, input1, input2){
-	switch (operator){
-		case "+":
-			return input1 + input2;
-			break;
-		case "-":
-			return input1-input2;
-			break;
-		case "*":
-			return input1*input2;
-			break;
-		case "/":
-      if (input2 == 0){
-        return "You are a fucking idiot";
-      }
-			return input1/input2;
-			break;
-	}
-}
